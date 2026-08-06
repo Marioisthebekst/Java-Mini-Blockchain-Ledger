@@ -49,8 +49,9 @@ public class Transaction {
     }
 
     private String getData() {
-        return Base64.getEncoder().encodeToString(sender.getEncoded()) +
-                Base64.getEncoder().encodeToString(recipient.getEncoded()) +
-                Float.toString(amount);
+        String senderData = (sender != null) ? Base64.getEncoder().encodeToString(sender.getEncoded()) : "SYSTEM_INITIALIZATION";
+        String recipientData = (recipient != null) ? Base64.getEncoder().encodeToString(recipient.getEncoded()) : "";
+
+        return senderData + recipientData + Float.toString(amount);
     }
 }
