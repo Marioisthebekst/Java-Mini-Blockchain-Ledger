@@ -1,11 +1,8 @@
-import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.security.MessageDigest;
 
 public class Block {
-    public String hash;
-    public String previousHash;
+    private String hash;
+    private String previousHash;
     private String data;
     private long timeStamp;
     private int nonce;
@@ -16,6 +13,14 @@ public class Block {
         this.previousHash = previousHash;
         this.timeStamp = new Date().getTime();
         this.hash = calculateHash();
+    }
+
+    public String getHash() {
+        return this.hash;
+    }
+
+    public String getPreviousHash() {
+        return this.previousHash;
     }
 
     public String calculateHash() {
